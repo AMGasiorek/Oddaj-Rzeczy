@@ -6,6 +6,7 @@ class App extends Component {
       <div>
         <h1>Nagłówek</h1>
         <p>Paragraf</p>
+          <p>coś</p>
       </div>
     );
   }
