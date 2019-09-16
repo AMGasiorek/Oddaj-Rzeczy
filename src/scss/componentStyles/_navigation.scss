@@ -1,0 +1,15 @@
+nav {
+  width: 683px;
+
+  border: 1px solid blue;
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .menu--element {
+      font-size: 18px;
+      padding: 9px;
+    }
+  }
+}

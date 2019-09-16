@@ -1,5 +1,16 @@
+//Import of settings:
 @import "settings/fonts";
 @import "settings/colors";
 
-
+//Import of reset:
 @import "reset/reset";
+
+//Import of element styles:
+@import "elementStyles/navLink";
+
+
+//Import of component styles:
+@import "componentStyles/homeHeader";
+@import "componentStyles/topMenu";
+@import "componentStyles/navigation";
+@import "componentStyles/loginRegister";

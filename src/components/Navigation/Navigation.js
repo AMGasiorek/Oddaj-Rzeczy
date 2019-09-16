@@ -1,48 +1,28 @@
 import React from 'react';
-import {NavLink } from 'react-router-dom';
-import SignOutButton from '../SignOut/SignOut';
+import {Link } from 'react-scroll';
 import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
-import { AuthUserContext } from '../Session/Session';
-
 
 
 const Navigation = () => (
-    <div>
-        <AuthUserContext.Consumer>
-            {authUser => authUser ? <NavigationAuth authUser={authUser}/> : <NavigationNonAuth />}
-        </AuthUserContext.Consumer>
-    </div>
-);
-
-const NavigationAuth = ({ authUser }) => (
-    <ul className="menu">
-        <li className="menu--element">
-            <NavLink to={ROUTES.HOME} className="NavLink" activeClassName="Active">home</NavLink>
-        </li>
-        <li className="menu--element">
-            <NavLink to={ROUTES.ACCOUNT} className="NavLink" activeClassName="Active">profil</NavLink>
-        </li>
-        {!!authUser.roles[ROLES.ADMIN] && (
+    <nav>
+        <ul className="menu">
             <li className="menu--element">
-                <NavLink to={ROUTES.ADMIN} className="NavLink" activeClassName="Active">admin</NavLink>
+                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">Start</Link>
             </li>
-        )}
-        <li className="menu--element">
-            <SignOutButton />
-        </li>
-    </ul>
-);
-
-const NavigationNonAuth = () => (
-    <ul className="menu">
-        <li className="menu--element">
-            <NavLink to={ROUTES.DEMO} className="NavLink" activeClassName="Active">demo</NavLink>
-        </li>
-        <li className="menu--element">
-            <NavLink to={ROUTES.SIGN_IN} className="NavLink" activeClassName="Active">zaloguj</NavLink>
-        </li>
-    </ul>
+            <li className="menu--element">
+                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">O co chodzi?</Link>
+            </li>
+            <li className="menu--element">
+                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">O nas</Link>
+            </li>
+            <li className="menu--element">
+                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">Fundacja i organizacje</Link>
+            </li>
+            <li className="menu--element">
+                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">Kontakt</Link>
+            </li>
+        </ul>
+    </nav>
 );
 
 

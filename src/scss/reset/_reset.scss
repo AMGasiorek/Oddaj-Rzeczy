@@ -7,3 +7,22 @@
 body {
   font-family: $font-base;
 }
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+input {
+  all: unset;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+li {
+  display: block;
+  align-items: center;
+}
