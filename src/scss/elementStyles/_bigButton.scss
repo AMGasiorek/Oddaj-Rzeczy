@@ -1,0 +1,16 @@
+.bigButton {
+  width: 9.5 * $heightUnit;
+  height: 4 * $heightUnit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.75px solid $darkgrey;
+
+
+  a, button {
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}

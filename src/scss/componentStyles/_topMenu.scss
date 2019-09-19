@@ -1,9 +1,9 @@
 .topMenu {
-  width: 683px;
-  height: 95px;
+  width: $col-5;
+  height: 3*$heightUnit;
+  margin-top: 1*$heightUnit;
+  margin-left: $col-1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  border: 1px solid black;
 }

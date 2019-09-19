@@ -1,3 +1,17 @@
 header {
+  display: flex;
+}
 
+.header--leftColumn {
+  width: $col-7;
+  img {
+    display: block;
+    height: 100vh;
+    margin: 0 -25vw;
+  }
+}
+
+.header--rightColumn {
+  width: $col-6;
+  margin-right: $col-1;
 }

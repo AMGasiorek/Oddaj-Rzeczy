@@ -16,31 +16,31 @@ const LoginRegister = () => (
 );
 
 const LoginRegisterAuth = ({ authUser }) => (
-    <ul className="menu">
-        <li className="menu--element">
-            <NavLink to={ROUTES.ACCOUNT} className="NavLink" activeClassName="NavLinkActive">Profil</NavLink>
+    <ul>
+        <li>
+            <NavLink to={ROUTES.ACCOUNT} className="navLink" activeClassName="logLinkActive">Profil</NavLink>
         </li>
-        <li className="menu--element">
-            <NavLink to={ROUTES.GIVE_AWAY} className="NavLink" activeClassName="NavLinkActive">Oddaj rzeczy</NavLink>
+        <li>
+            <NavLink to={ROUTES.GIVE_AWAY_FORM} className="navLink" activeClassName="logLinkActive">Oddaj Rzeczy</NavLink>
         </li>
         {!!authUser.roles[ROLES.ADMIN] && (
-            <li className="menu--element">
-                <NavLink to={ROUTES.ADMIN} className="NavLink" activeClassName="NavLinkActive">admin</NavLink>
+            <li>
+                <NavLink to={ROUTES.ADMIN} className="navLink" activeClassName="logLinkActive">Admin</NavLink>
             </li>
         )}
-        <li className="menu--element">
+        <li>
             <SignOutButton />
         </li>
     </ul>
 );
 
 const LoginRegisterNonAuth = () => (
-    <ul className="menu">
-        <li className="menu--element">
-            <NavLink to={ROUTES.SIGN_IN} className="NavLink" activeClassName="NavLinkActive">Zaloguj</NavLink>
+    <ul>
+        <li>
+            <NavLink to={ROUTES.SIGN_IN} className="navLink" activeClassName="logLinkActive">Zaloguj</NavLink>
         </li>
-        <li className="menu--element">
-            <NavLink to={ROUTES.SIGN_UP} className="NavLink" activeClassName="NavLinkActive">Załóż konto</NavLink>
+        <li>
+            <NavLink to={ROUTES.SIGN_UP} className="navLink" activeClassName="logLinkActive">Załóż konto</NavLink>
         </li>
     </ul>
 );

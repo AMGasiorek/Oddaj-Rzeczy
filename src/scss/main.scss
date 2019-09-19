@@ -1,12 +1,15 @@
 //Import of settings:
 @import "settings/fonts";
 @import "settings/colors";
+@import "settings/layout";
 
 //Import of reset:
 @import "reset/reset";
 
 //Import of element styles:
 @import "elementStyles/navLink";
+@import "elementStyles/bigButton";
+@import "elementStyles/sectionContainer";
 
 
 //Import of component styles:
@@ -14,3 +17,4 @@
 @import "componentStyles/topMenu";
 @import "componentStyles/navigation";
 @import "componentStyles/loginRegister";
+@import "componentStyles/intro";

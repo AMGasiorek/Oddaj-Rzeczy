@@ -1,7 +1,12 @@
-.NavLink {
-
+.navLink {
+  font-size: 18px;
+  padding: 9px;
 }
 
-.NavLinkActive {
+.navLinkActive {
   border: 0.75px solid $darkgrey;
+}
+
+.logLinkActive {
+  border: 0.75px solid $gold;
 }

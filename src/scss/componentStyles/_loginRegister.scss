@@ -1,15 +1,20 @@
 .loginRegister {
 
-  border: 1px solid red;
-
-  .menu {
+  ul {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    .menu--element {
-      font-size: 13px;
-      padding: 9px;
+    list-style-type: none;
+
+    li {
+
+      a {
+        font-size: 13px;
+        padding: 9px;
+      }
+
     }
+
   }
 
 }

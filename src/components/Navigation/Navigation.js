@@ -1,25 +1,26 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 import {Link } from 'react-scroll';
 import * as ROUTES from '../../constants/routes';
 
 
 const Navigation = () => (
     <nav>
-        <ul className="menu">
-            <li className="menu--element">
-                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">Start</Link>
+        <ul>
+            <li>
+                <NavLink to={ROUTES.HOME} className="navLink" activeClassName="navLinkActive">Start</NavLink>
             </li>
-            <li className="menu--element">
-                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">O co chodzi?</Link>
+            <li>
+                <Link to={ROUTES.HOME} className="navLink" >O co chodzi?</Link>
             </li>
-            <li className="menu--element">
-                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">O nas</Link>
+            <li>
+                <Link to={ROUTES.HOME} className="navLink" >O nas</Link>
             </li>
-            <li className="menu--element">
-                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">Fundacja i organizacje</Link>
+            <li>
+                <Link to={ROUTES.HOME} className="navLink" >Fundacja i organizacje</Link>
             </li>
-            <li className="menu--element">
-                <Link to={ROUTES.HOME} className="NavLink" activeClassName="NavLinkActive">Kontakt</Link>
+            <li>
+                <Link to={ROUTES.HOME} className="navLink" >Kontakt</Link>
             </li>
         </ul>
     </nav>

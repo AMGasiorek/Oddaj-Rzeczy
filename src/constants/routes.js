@@ -4,4 +4,5 @@ export const SIGN_IN = '/signin';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
-export const GIVE_AWAY = '/oddaj-rzeczy';
+export const GIVE_AWAY_FORM = '/oddaj-rzeczy';
+export const FUND_RAISING = '/zorganizuj-zbiorke';
