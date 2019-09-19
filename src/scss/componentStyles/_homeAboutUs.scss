@@ -1,0 +1,38 @@
+.aboutUs{
+  display: flex;
+
+  .aboutUs--leftColumn {
+    width: $col-7;
+    padding: 0 $col-1;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .aboutUs--title {
+      font-size: $heightUnit;
+      margin: 0.8 * $heightUnit 0;
+    }
+
+    .aboutUs--description {
+      font-size: 1 * $heightUnit;
+      margin: 0.8 * $heightUnit 0;
+      text-align: center;
+    }
+
+    .signature {
+      width: $col-2;
+      margin-left: $col-3;
+    }
+  }
+
+  .aboutUs--rightColumn {
+    width: $col-7;
+
+    img {
+      width: $col-7;
+      height: auto;
+    }
+  }
+}

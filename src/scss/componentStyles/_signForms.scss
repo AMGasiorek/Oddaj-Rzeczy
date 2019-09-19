@@ -1,0 +1,8 @@
+.signForms--container {
+  width: $col-4;
+  margin: 10 * $heightUnit $col-5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

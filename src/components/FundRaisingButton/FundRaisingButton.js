@@ -18,7 +18,7 @@ const FundRaisingButtonAuth = ({ authUser }) => (
 );
 
 const FundRaisingButtonNonAuth = () => (
-    <Link to={ROUTES.SIGN_IN} >Zoorganizuj Zbiórkę</Link>
+    <Link to={ROUTES.SIGN_IN} >Zorganizuj Zbiórkę</Link>
 );
 
 export default FundRaisingButton;

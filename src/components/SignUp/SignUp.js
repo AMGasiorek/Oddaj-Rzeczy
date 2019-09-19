@@ -4,13 +4,21 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
+import TopMenu from "../TopMenu/TopMenu";
 
 
 const SignUpPage = () => (
-    <div className="signForms--container">
-        <h1>zarejestruj</h1>
-        <SignUpForm />
-    </div>
+    <>
+        <div className="topMenuContainer">
+            <div className="topMenuContainer--leftMargin"></div>
+            <TopMenu/>
+            <div className="topMenuContainer--rightMargin"></div>
+        </div>
+        <div className="signForms--container">
+            <h1>zarejestruj</h1>
+            <SignUpForm />
+        </div>
+    </>
 );
 
 const INITIAL_STATE = {

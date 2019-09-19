@@ -5,17 +5,25 @@ import { SignUpLink } from '../SignUp/SignUp';
 import { PasswordForgetLink } from '../PasswordForget/PassworgForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import TopMenu from "../TopMenu/TopMenu";
 
 const SignInPage = () => (
-    <div className="signForms--container">
-        <h1>panel logowania</h1>
-        <SignInForm />
-        <SignInGoogle />
-        <SignInFacebook />
-        <SignInTwitter />
-        <PasswordForgetLink />
-        <SignUpLink />
-    </div>
+    <>
+        <div className="topMenuContainer">
+            <div className="topMenuContainer--leftMargin"></div>
+            <TopMenu/>
+            <div className="topMenuContainer--rightMargin"></div>
+        </div>
+        <div className="signForms--container">
+            <h1>panel logowania</h1>
+            <SignInForm />
+            <SignInGoogle />
+            <SignInFacebook />
+            <SignInTwitter />
+            <PasswordForgetLink />
+            <SignUpLink />
+        </div>
+    </>
 );
 
 const INITIAL_STATE = {

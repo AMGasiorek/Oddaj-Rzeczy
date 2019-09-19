@@ -7,3 +7,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.topMenuContainer {
+  width: 100%;
+  display: flex;
+
+  .topMenuContainer--leftMargin {
+    width: $col-8;
+  }
+
+  .topMenuContainer--rightMargin {
+    width: $col-1;
+  }
+}

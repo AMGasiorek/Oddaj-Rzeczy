@@ -1,6 +1,6 @@
 .bigButton {
-  width: 9.5 * $heightUnit;
-  height: 4 * $heightUnit;
+  width: 9 * $heightUnit;
+  height: 3 * $heightUnit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
 
 
   a, button {
-    font-size: 36px;
+    font-size: $heightUnit;
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;

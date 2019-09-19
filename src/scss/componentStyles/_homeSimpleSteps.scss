@@ -1,0 +1,65 @@
+.homeSimpleSteps {
+
+  .whiteRow {
+    width: 100%;
+    height: 6 * $heightUnit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: $heightUnit;
+      margin: 0.8 * $heightUnit;
+    }
+
+  }
+
+  .greyRow {
+    width: 100%;
+    height: 10 * $heightUnit;
+    background-color: $white;
+
+    .stepsContainer {
+      width: $col-8;
+      height: 100%;
+      margin: 0 $col-3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .step {
+        width: 5 * $heightUnit;
+        height: 6 * $heightUnit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .step--description {
+          font-size: 18px;
+          margin: 0.3 * $heightUnit 0;
+        }
+
+        .stepLine {
+          width: 2.5 * $heightUnit;
+          border: 0.75px solid $lightgrey;
+        }
+
+        .step--text {
+          font-size: 16px;
+          margin: 0.3 * $heightUnit 0;
+        }
+
+        img {
+          width: 2.5 * $heightUnit;
+          height: 2.5 * $heightUnit;
+        }
+
+      }
+
+    }
+
+  }
+
+}
