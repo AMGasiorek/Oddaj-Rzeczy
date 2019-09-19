@@ -1,0 +1,39 @@
+.home3Columns {
+  background-color: $gold;
+ /* height: 4*$heightUnit;*/
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    div {
+      width: $col-3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .counter {
+        font-size: 2.7*$heightUnit;
+        line-height: 2.7*$heightUnit;
+        font-weight: 300;
+        margin-top: 1.5*$heightUnit;
+      }
+
+      .counter--description {
+        font-size: 18px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: $heightUnit;
+        margin-bottom: $heightUnit;
+      }
+
+      .counter--text {
+        font-family: $font-alt;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 1.5*$heightUnit;
+      }
+    }
+  }
+}

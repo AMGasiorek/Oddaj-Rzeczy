@@ -5,6 +5,10 @@
   justify-content: center;
   align-items: center;
   border: 0.75px solid $darkgrey;
+  &:hover {
+    border: 0.75px solid $gold;
+    color: $gold;
+  }
 
 
   a, button {
