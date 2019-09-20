@@ -1,11 +1,10 @@
-.bigButton {
-  width: 9 * $heightUnit;
-  height: 3 * $heightUnit;
+.mediumButton {
+  width: 4.5 * $heightUnit;
+  height: 1.75 * $heightUnit;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0.75px solid $darkgrey;
-  font-size: $heightUnit;
+  font-size: 0.6 * $heightUnit;
   font-weight: 300;
   text-align: center;
   text-transform: uppercase;
@@ -16,7 +15,7 @@
 
 
   a, button {
-    font-size: $heightUnit;
+    font-size: 0.6 * $heightUnit;
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;

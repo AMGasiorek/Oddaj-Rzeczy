@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import TopMenu from "../TopMenu/TopMenu";
+import Decoration from "../../assets/Decoration.svg";
 
 const PasswordForgetPage = () => (
-    <div className="signForms--container">
-        <h1>przypomnij hasło</h1>
+    <>
+        <div className="topMenuContainer">
+            <div className="topMenuContainer--leftMargin"></div>
+            <TopMenu/>
+            <div className="topMenuContainer--rightMargin"></div>
+        </div>
         <PasswordForgetForm />
-    </div>
+    </>
 );
 
 const INITIAL_STATE = {
@@ -43,26 +49,34 @@ class PasswordForgetFormBase extends Component {
         const { email, error } = this.state;
         const isInvalid = email === '';
         return (
-            <form onSubmit={this.onSubmit} className="signForms">
-                <input
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <button disabled={isInvalid} type="submit">
-                    przypomnij hasło
-                </button>
-                {error && <p>{error.message}</p>}
-            </form>
+            <div className="signForms--container">
+                <p className="signForms--title">Zresetuj hasło</p>
+                <img src={Decoration} alt="decoration"/>
+                <form onSubmit={this.onSubmit} className="signForms">
+                    <div className="signForms--inputField">
+                        <p className="signForms--label">Wpisz swój adres email</p>
+                        <input
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.onChange}
+                            type="text"
+                            placeholder="Email Address"
+                        />
+                        <div className="signForms--underline"></div>
+                    </div>
+                    <div className="signForms--buttonsContainer">
+                        <button disabled={isInvalid} type="submit" className="mediumButton">Zresetuj Hasło</button>
+                        {error && <p>{error.message}</p>}
+                    </div>
+                </form>
+            </div>
         );
     }
 }
 
 const PasswordForgetLink = () => (
     <p className="signLinks">
-        <Link to={ROUTES.PASSWORD_FORGET}>zapomniałeś hasła?</Link>
+        <Link to={ROUTES.PASSWORD_FORGET} className="smallButton">Zapomniałeś hasła?</Link>
     </p>
 );
 

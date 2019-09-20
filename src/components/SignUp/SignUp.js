@@ -5,19 +5,17 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import TopMenu from "../TopMenu/TopMenu";
+import Decoration from "../../assets/Decoration.svg";
 
 
 const SignUpPage = () => (
     <>
         <div className="topMenuContainer">
-            <div className="topMenuContainer--leftMargin"></div>
+            <div className="topMenuContainer--leftMargin"> </div>
             <TopMenu/>
-            <div className="topMenuContainer--rightMargin"></div>
+            <div className="topMenuContainer--rightMargin"> </div>
         </div>
-        <div className="signForms--container">
-            <h1>zarejestruj</h1>
-            <SignUpForm />
-        </div>
+        <SignUpForm />
     </>
 );
 
@@ -26,6 +24,9 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
+    emailError: false,
+    passwordLengthError: false,
+    notTheSamePasswordError: false,
     isAdmin: false,
     error: null,
 };
@@ -50,11 +51,27 @@ class SignUpFormBase extends Component {
 
     onSubmit = event => {
 
+        event.preventDefault();
         const { username, email, passwordOne, isAdmin } = this.state;
         const roles = {};
         if (isAdmin) {
             roles[ROLES.ADMIN] = ROLES.ADMIN;
         }
+
+        if (passwordOne.length < 6) {
+            this.setState({ passwordLengthError: true });
+            return;
+        } else {
+            this.setState({ passwordLengthError: false });
+        }
+
+        if (passwordOne !== this.state.passwordTwo) {
+            this.setState({ notTheSamePasswordError: true });
+            return;
+        } else {
+            this.setState({ notTheSamePasswordError: false });
+        }
+
 
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -83,7 +100,7 @@ class SignUpFormBase extends Component {
                 this.setState({ error });
             });
         event.preventDefault();
-    }
+    };
 
     onChange = event => {
         this.setState({ [event.target.name]: event.target.value });
@@ -104,60 +121,98 @@ class SignUpFormBase extends Component {
             error,
         } = this.state;
 
-        const isInvalid =
-            passwordOne !== passwordTwo ||
-            passwordOne === '' ||
-            email === '' ||
-            username === '';
+
+        // const isInvalid =
+        //     passwordOne !== passwordTwo ||
+        //     passwordOne.length > 5 ||
+        //     email === '' ||
+        //     username === '';
 
         return (
-            <form onSubmit={this.onSubmit} className="signForms">
-                <input
-                    name="username"
-                    value={username}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Full Name"
-                />
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <input
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <input
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Confirm Password"
-                />
+            <div className="signForms--container">
+                <p className="signForms--title">Załóż konto</p>
+                <img src={Decoration} alt="decoration"/>
+                <form onSubmit={this.onSubmit} className="signForms">
+                    <div className="signForms--inputField">
+                        <p className="signForms--label">Nazwa użytkownika</p>
+                        <input
+                            name="username"
+                            value={username}
+                            onChange={this.onChange}
+                            type="text"
+                            placeholder="Full Name"
+                        />
+                        <div className="signForms--underline"></div>
+                        <p className="signForms--label">Email</p>
+                        <input
+                            name="email"
+                            value={email}
+                            onChange={this.onChange}
+                            type="text"
+                            placeholder="Email Address"
+                        />
+                        {this.state.emailError === true ?
+                            <div className="signForms--underline__error">
+                                <p className="signForms--validation__error">Wpisz poprawny adres email</p>
+                            </div> :
+                            <div className="signForms--underline">
+                                <p className="signForms--validation"> </p>
+                            </div>
+                        }
+                        <p className="signForms--label">Hasło</p>
+                        <input
+                            name="passwordOne"
+                            value={passwordOne}
+                            onChange={this.onChange}
+                            type="password"
+                            placeholder="Password"
+                        />
+                        {this.state.passwordLengthError === true ?
+                            <div className="signForms--underline__error">
+                                <p className="signForms--validation__error">Hasło musi posiadać co najmniej 6 znaków</p>
+                            </div> :
+                            <div className="signForms--underline">
+                                <p className="signForms--validation"> </p>
+                            </div>
+                        }
+                        <p className="signForms--label">Powtórz hasło</p>
+                        <input
+                            name="passwordTwo"
+                            value={passwordTwo}
+                            onChange={this.onChange}
+                            type="password"
+                            placeholder="Confirm Password"
+                        />
+                        {this.state.notTheSamePasswordError === true ?
+                            <div className="signForms--underline__error">
+                                <p className="signForms--validation__error">Hasła muszą być takie same</p>
+                            </div> :
+                            <div className="signForms--underline">
+                                <p className="signForms--validation"> </p>
+                            </div>
+                        }
+                        {error && <p className="signForms--validation__error">{error.message}</p>}
 
+                        {/*Możliwość zarejestrowania się jako admin*/}
 
-                {/*Możliwość zarejestrowania się jako admin*/}
+                        {/*<label>*/}
+                        {/*    Admin:*/}
+                        {/*    <input*/}
+                        {/*        name="isAdmin"*/}
+                        {/*        type="checkbox"*/}
+                        {/*        checked={isAdmin}*/}
+                        {/*        onChange={this.onChangeCheckbox}*/}
+                        {/*    />*/}
+                        {/*</label>*/}
 
-                {/*<label>*/}
-                {/*    Admin:*/}
-                {/*    <input*/}
-                {/*        name="isAdmin"*/}
-                {/*        type="checkbox"*/}
-                {/*        checked={isAdmin}*/}
-                {/*        onChange={this.onChangeCheckbox}*/}
-                {/*    />*/}
-                {/*</label>*/}
+                    </div>
+                    <div className="signForms--buttonsContainer">
 
-
-                <button disabled={isInvalid} type="submit">zarejestruj</button>
-                {error && <p>{error.message}</p>}
-            </form>
+                        <button  type="submit" className="mediumButton">Załóż konto</button>
+                        {/*{error && <p>{error.message}</p>}*/}
+                    </div>
+                </form>
+            </div>
         );
     }
 }
@@ -169,9 +224,7 @@ const SignUpForm = compose(
 )(SignUpFormBase);
 
 const SignUpLink = () => (
-    <p className="signLinks">
-        Nie masz jeszcze swojego profilu? <Link to={ROUTES.SIGN_UP}>zarejestruj</Link>
-    </p>
+    <Link to={ROUTES.SIGN_UP} className="mediumButton">Załóż konto</Link>
 );
 export default SignUpPage;
 export { SignUpForm, SignUpLink };

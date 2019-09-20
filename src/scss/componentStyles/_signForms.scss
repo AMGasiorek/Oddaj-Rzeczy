@@ -1,8 +1,97 @@
 .signForms--container {
   width: $col-4;
-  margin: 10 * $heightUnit $col-5;
+  margin: 2 * $heightUnit $col-5 0 $col-5;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.signForms {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $heightUnit;
+
+  .signForms--inputField {
+    width: $col-3;
+    background-color: $white;
+    padding: $heightUnit 1.5 * $heightUnit;
+
+    input[type=text], input[type=password] {
+      background-color: $white;
+      width: 100%;
+
+      &:focus, &:active, &:hover {
+        background-color: $gold;
+      }
+    }
+
+    input:-webkit-autofill {
+      font-family: $font-base;
+      -webkit-box-shadow: 0 0 0 30px $white inset;
+      -webkit-text-fill-color: $darkgrey !important;
+    }
+
+    input:-webkit-autofill:active,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      background-color: $gold;
+      -webkit-text-fill-color: $darkgrey !important;
+    }
+  }
+
+  .signForms--underline {
+    width:100%;
+    border-top: 2px solid $lightgrey;
+
+    .signForms--validation {
+      font-size: 10px;
+    }
+  }
+
+  .signForms--underline__error {
+    width:100%;
+    border-top: 2px solid red;
+  }
+
+  .signForms--validation__error {
+    display: block;
+    width: 100%;
+    font-size: 10px;
+    color: red;
+  }
+
+  .signForms--buttonsContainer {
+    width: 100%;
+    display: flex;
+    margin-top: $heightUnit;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+}
+
+
+.signForms--title {
+  font-size: $heightUnit;
+  margin: 0.8 * $heightUnit 0;
+}
+
+.signForms--label {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0.5 * $heightUnit 0;
+}
+
+.signLinks {
+  margin-top: $heightUnit;
+  float: right;
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
 }

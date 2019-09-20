@@ -6,6 +6,7 @@ import { PasswordForgetLink } from '../PasswordForget/PassworgForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import TopMenu from "../TopMenu/TopMenu";
+import Decoration from "../../assets/Decoration.svg";
 
 const SignInPage = () => (
     <>
@@ -14,21 +15,14 @@ const SignInPage = () => (
             <TopMenu/>
             <div className="topMenuContainer--rightMargin"></div>
         </div>
-        <div className="signForms--container">
-            <h1>panel logowania</h1>
-            <SignInForm />
-            <SignInGoogle />
-            <SignInFacebook />
-            <SignInTwitter />
-            <PasswordForgetLink />
-            <SignUpLink />
-        </div>
+        <SignInForm />
     </>
 );
 
 const INITIAL_STATE = {
     email: '',
     password: '',
+    passwordLengthError: false,
     error: null,
 };
 
@@ -50,7 +44,18 @@ class SignInFormBase extends Component {
     }
 
     onSubmit = event => {
+
+        event.preventDefault();
+
         const { email, password } = this.state;
+
+        if (password.length < 6) {
+            this.setState({ passwordLengthError: true });
+            return;
+        } else {
+            this.setState({ passwordLengthError: false });
+        }
+
         this.props.firebase
             .doSignInWithEmailAndPassword(email, password)
             .then(() => {
@@ -69,28 +74,52 @@ class SignInFormBase extends Component {
 
     render() {
         const { email, password, error } = this.state;
-        const isInvalid = password === '' || email === '';
+        const isInvalid = password.length === '' || email === '';
         return (
-            <form onSubmit={this.onSubmit} className="signForms">
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <input
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <button disabled={isInvalid} type="submit">
-                    zaloguj
-                </button>
-                {error && <p>{error.message}</p>}
-            </form>
+            <div className="signForms--container">
+                <p className="signForms--title">Zaloguj się</p>
+                <img src={Decoration} alt="decoration"/>
+                <form onSubmit={this.onSubmit} className="signForms">
+                    <div className="signForms--inputField">
+                        <p className="signForms--label">Email</p>
+                        <input
+                            name="email"
+                            value={email}
+                            onChange={this.onChange}
+                            type="text"
+                            placeholder="Email Address"
+                        />
+                        <div className="signForms--underline"></div>
+                        <p className="signForms--label">Hasło</p>
+                        <input
+                            name="password"
+                            value={password}
+                            onChange={this.onChange}
+                            type="password"
+                            placeholder="Password"
+                        />
+                        {this.state.passwordLengthError === true ?
+                            <div className="signForms--underline__error">
+                                <p className="signForms--validation__error">Hasło musi posiadać co najmniej 6 znaków</p>
+                            </div> :
+                            <div className="signForms--underline">
+                                <p className="signForms--validation"> </p>
+                            </div>
+                        }
+                        {/*<SignInGoogle />*/}
+                        {/*<SignInFacebook />*/}
+                        {/*<SignInTwitter />*/}
+                        <PasswordForgetLink />
+                        {error && <p className="signForms--validation__error">{error.message}</p>}
+                    </div>
+                    <div className="signForms--buttonsContainer">
+                        <button disabled={isInvalid} type="submit" className="mediumButton">
+                            Zaloguj się
+                        </button>
+                        <SignUpLink />
+                    </div>
+                </form>
+            </div>
         );
     }
 }
