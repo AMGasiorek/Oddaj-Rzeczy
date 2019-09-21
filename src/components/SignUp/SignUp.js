@@ -148,7 +148,7 @@ class SignUpFormBase extends Component {
                             value={username}
                             onChange={this.onChange}
                             type="text"
-                            placeholder="Full Name"
+                            placeholder=""
                         />
                         <div className="signForms--underline"></div>
                         <p className="signForms--label">Email</p>
@@ -157,7 +157,7 @@ class SignUpFormBase extends Component {
                             value={email}
                             onChange={this.onChange}
                             type="text"
-                            placeholder="Email Address"
+                            placeholder=""
                         />
                         {this.state.emailError === true ?
                             <div className="signForms--underline__error">
@@ -173,7 +173,7 @@ class SignUpFormBase extends Component {
                             value={passwordOne}
                             onChange={this.onChange}
                             type="password"
-                            placeholder="Password"
+                            placeholder=""
                         />
                         {this.state.passwordLengthError === true ?
                             <div className="signForms--underline__error">
@@ -189,7 +189,7 @@ class SignUpFormBase extends Component {
                             value={passwordTwo}
                             onChange={this.onChange}
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder=""
                         />
                         {this.state.notTheSamePasswordError === true ?
                             <div className="signForms--underline__error">

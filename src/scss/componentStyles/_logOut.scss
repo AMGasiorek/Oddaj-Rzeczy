@@ -1,0 +1,18 @@
+.logOutGoodBye {
+  width: $col-3;
+  margin: 4 * $heightUnit $col-5 0 $col-5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-bottom: 2 * $heightUnit;
+  }
+}
+
+.logOutGoodBye--title {
+  font-size: $heightUnit;
+  margin: 0.8 * $heightUnit 0;
+  text-align: center;
+}

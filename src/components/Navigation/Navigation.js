@@ -19,10 +19,10 @@ class Navigation extends Component {
                         <NavLink to={ROUTES.HOME} className="navLink" activeClassName="navLinkActive">Start</NavLink>
                     </li>
                     <li>
-                        <Link activeClass="active" to="SimpleSteps" spy={true} smooth={true} offset={50} duration={500} onSetActive={this.handleSetActive}>O co chodzi?</Link>
+                        <Link className="navLink" activeClass="active" to="SimpleSteps" spy={true} smooth={true} offset={50} duration={500} onSetActive={this.handleSetActive}>O co chodzi?</Link>
                     </li>
                     <li>
-                        <Link activeClass="active" to="aboutUs" spy={true} smooth={true} offset={50} duration={500} onSetActive={this.handleSetActive}>O nas</Link>
+                        <Link className="navLink" activeClass="active" to="aboutUs" spy={true} smooth={true} offset={50} duration={500} onSetActive={this.handleSetActive}>O nas</Link>
                     </li>
                     <li>
                         <Link to={ROUTES.HOME} className="navLink">Fundacja i organizacje</Link>

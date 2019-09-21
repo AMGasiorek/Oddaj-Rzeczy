@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink } from 'react-router-dom';
-import SignOutButton from '../SignOut/SignOut';
+import LogOutButton from '../LogOutButton/LogOutButton';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import { AuthUserContext } from '../Session/Session';
@@ -29,7 +29,7 @@ const LoginRegisterAuth = ({ authUser }) => (
             </li>
         )}
         <li>
-            <SignOutButton />
+            <NavLink to={ROUTES.LOGOUT} className="navLink" activeClassName="logLinkActive"><LogOutButton/></NavLink>
         </li>
     </ul>
 );

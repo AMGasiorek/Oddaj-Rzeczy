@@ -96,7 +96,7 @@ class SignInFormBase extends Component {
                             value={email}
                             onChange={this.onChange}
                             type="text"
-                            placeholder="Email Address"
+                            placeholder=""
                         />
                         {this.state.emailError === true ?
                             <div className="signForms--underline__error">
@@ -112,7 +112,7 @@ class SignInFormBase extends Component {
                             value={password}
                             onChange={this.onChange}
                             type="password"
-                            placeholder="Password"
+                            placeholder=""
                         />
                         {this.state.passwordLengthError === true ?
                             <div className="signForms--underline__error">
