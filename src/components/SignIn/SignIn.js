@@ -22,6 +22,7 @@ const SignInPage = () => (
 const INITIAL_STATE = {
     email: '',
     password: '',
+    emailError: false,
     passwordLengthError: false,
     error: null,
 };
@@ -48,6 +49,14 @@ class SignInFormBase extends Component {
         event.preventDefault();
 
         const { email, password } = this.state;
+        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (emailFilter.test(email) === false) {
+            this.setState({ emailError: true });
+            return;
+        } else {
+            this.setState({ emailError: false });
+        }
 
         if (password.length < 6) {
             this.setState({ passwordLengthError: true });
@@ -89,7 +98,14 @@ class SignInFormBase extends Component {
                             type="text"
                             placeholder="Email Address"
                         />
-                        <div className="signForms--underline"></div>
+                        {this.state.emailError === true ?
+                            <div className="signForms--underline__error">
+                                <p className="signForms--validation__error">Wpisz poprawny adres email</p>
+                            </div> :
+                            <div className="signForms--underline">
+                                <p className="signForms--validation"> </p>
+                            </div>
+                        }
                         <p className="signForms--label">Hasło</p>
                         <input
                             name="password"
@@ -100,17 +116,18 @@ class SignInFormBase extends Component {
                         />
                         {this.state.passwordLengthError === true ?
                             <div className="signForms--underline__error">
-                                <p className="signForms--validation__error">Hasło musi posiadać co najmniej 6 znaków</p>
+                                <p className="signForms--validation__error">Podane hasło jest za krótkie</p>
                             </div> :
                             <div className="signForms--underline">
                                 <p className="signForms--validation"> </p>
                             </div>
                         }
+                        {error && <p className="signForms--validation__error">{error.message}</p>}
                         {/*<SignInGoogle />*/}
                         {/*<SignInFacebook />*/}
                         {/*<SignInTwitter />*/}
                         <PasswordForgetLink />
-                        {error && <p className="signForms--validation__error">{error.message}</p>}
+
                     </div>
                     <div className="signForms--buttonsContainer">
                         <button disabled={isInvalid} type="submit" className="mediumButton">

@@ -53,9 +53,17 @@ class SignUpFormBase extends Component {
 
         event.preventDefault();
         const { username, email, passwordOne, isAdmin } = this.state;
+        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const roles = {};
         if (isAdmin) {
             roles[ROLES.ADMIN] = ROLES.ADMIN;
+        }
+
+        if (emailFilter.test(email) === false) {
+            this.setState({ emailError: true });
+            return;
+        } else {
+            this.setState({ emailError: false });
         }
 
         if (passwordOne.length < 6) {
@@ -207,9 +215,7 @@ class SignUpFormBase extends Component {
 
                     </div>
                     <div className="signForms--buttonsContainer">
-
                         <button  type="submit" className="mediumButton">Załóż konto</button>
-                        {/*{error && <p>{error.message}</p>}*/}
                     </div>
                 </form>
             </div>
