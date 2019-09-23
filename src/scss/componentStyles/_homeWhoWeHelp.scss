@@ -38,3 +38,32 @@
   text-align: center;
   font-size: 22px;
 }
+
+.whoWeHelp--list__item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8 * $heightUnit 0;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p, span {
+      font-family: $font-alt;
+      font-size: 18px;
+      font-weight: 300;
+      padding: 0.2 * $heightUnit 0;;
+    }
+
+    .p1 {
+      font-size: 26px;
+    }
+    .p2 {
+      font-style: italic;
+    }
+
+  }
+}
+

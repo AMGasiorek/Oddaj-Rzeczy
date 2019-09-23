@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Decoration from "../../assets/Decoration.svg";
+import HelpLists from "../../assets/HelpLists";
 
 const HomeWhoWeHelp = () => (
     <section className="sectionContainer">
@@ -7,17 +8,12 @@ const HomeWhoWeHelp = () => (
             <p className="whoWeHelp--title">Komu pomagamy</p>
             <img src={Decoration} alt="decoration"/>
         </div>
-        <WhoWeHelpInteracitveList/>
+        <WhoWeHelpList/>
     </section>
 );
 
-const HelpLists = {
-    listOne: {key: 1, name: "Fundacje", displayedText: "Fundacjom", description: "W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują."},
-    listTwo: {key: 2, name: "Organizacje", displayedText: "Organizacjom pozarządowym", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."},
-    listThree: {key: 3, name: "Zbiórki", displayedText: "Lokalnym zbiórkom", description: "Jeszcze jakiś inny teksto-wypełniacz lub Lorem Ipsum lub Food Ipsum i tak dalej"},
-};
 
-class WhoWeHelpInteracitveList extends Component {
+class WhoWeHelpList extends Component {
 
     constructor(props) {
         super(props);
@@ -57,16 +53,67 @@ class WhoWeHelpInteracitveList extends Component {
                 </div>
                 <div className="whoWeHelp--list">
                     {this.state.listOneIsVisible === true && (
-                        <p className="whoWeHelp--list__description">{HelpLists.listOne.description}</p>
+                        <>
+                            <p className="whoWeHelp--list__description">{HelpLists.listOne.description}</p>
+                            <ul>
+                                {HelpLists.listOne.list.map(listItem => (
+                                    <WhoWeHelpListItem
+                                        key={listItem.key}
+                                        name={listItem.name}
+                                        mission={listItem.mission}
+                                        collectedProducts={listItem.collectedProducts} />
+                                ))}
+                            </ul>
+                        </>
                     )}
                     {this.state.listTwoIsVisible === true && (
-                        <p className="whoWeHelp--list__description">{HelpLists.listTwo.description}</p>
+                        <>
+                            <p className="whoWeHelp--list__description">{HelpLists.listTwo.description}</p>
+                            <ul>
+                                {HelpLists.listTwo.list.map(listItem => (
+                                    <WhoWeHelpListItem
+                                        key={listItem.key}
+                                        name={listItem.name}
+                                        mission={listItem.mission}
+                                        collectedProducts={listItem.collectedProducts} />
+                                ))}
+                            </ul>
+                        </>
                     )}
                     {this.state.listThreeIsVisible === true && (
-                        <p className="whoWeHelp--list__description">{HelpLists.listThree.description}</p>
+                        <>
+                            <p className="whoWeHelp--list__description">{HelpLists.listThree.description}</p>
+                            <ul>
+                                {HelpLists.listThree.list.map(listItem => (
+                                    <WhoWeHelpListItem
+                                        key={listItem.key}
+                                        name={listItem.name}
+                                        mission={listItem.mission}
+                                        collectedProducts={listItem.collectedProducts} />
+                                ))}
+                            </ul>
+                        </>
                     )}
                 </div>
             </>
+        )
+    }
+}
+
+class WhoWeHelpListItem extends Component {
+
+    render () {
+        const {key, name, mission, collectedProducts} = this.props;
+        return (
+            <li key={key} className="whoWeHelp--list__item">
+                <div>
+                    <p className="p1">Organizacja "{name}"</p>
+                    <p className="p2">Misja: {mission}</p>
+                </div>
+                <div>
+                    <span>{collectedProducts}</span>
+                </div>
+            </li>
         )
     }
 }
