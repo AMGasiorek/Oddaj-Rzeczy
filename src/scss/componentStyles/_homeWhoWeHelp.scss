@@ -1,0 +1,40 @@
+.whoWeHelp--upperPart {
+  width: $col-6;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-bottom: 2 * $heightUnit;
+  }
+
+}
+
+.buttonsRow {
+  width: $col-6;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.whoWeHelp--title {
+  font-size: $heightUnit;
+  margin: 2 * $heightUnit 0 0.8 * $heightUnit 0;
+  text-align: center;
+}
+
+.whoWeHelp--list {
+  width: $col-10;
+  margin: 0 auto;
+
+}
+
+.whoWeHelp--list__description {
+  width: $col-5;
+  margin: 0 auto;
+  padding: 2 * $heightUnit 0;
+  text-align: center;
+  font-size: 22px;
+}

@@ -129,12 +129,13 @@ class SignUpFormBase extends Component {
             error,
         } = this.state;
 
+        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        // const isInvalid =
-        //     passwordOne !== passwordTwo ||
-        //     passwordOne.length > 5 ||
-        //     email === '' ||
-        //     username === '';
+        const isInvalid =
+            passwordOne !== passwordTwo ||
+            passwordOne.length < 6 ||
+            emailFilter.test(email) === false ||
+            username === '';
 
         return (
             <div className="signForms--container">
@@ -215,7 +216,7 @@ class SignUpFormBase extends Component {
 
                     </div>
                     <div className="signForms--buttonsContainer">
-                        <button  type="submit" className="mediumButton">Załóż konto</button>
+                        <button className="mediumButton">Załóż konto</button> {/*disabled={isInvalid}*/}
                     </div>
                 </form>
             </div>
