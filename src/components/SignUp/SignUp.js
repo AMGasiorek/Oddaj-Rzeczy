@@ -129,13 +129,13 @@ class SignUpFormBase extends Component {
             error,
         } = this.state;
 
-        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        // const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        const isInvalid =
-            passwordOne !== passwordTwo ||
-            passwordOne.length < 6 ||
-            emailFilter.test(email) === false ||
-            username === '';
+        // const isInvalid =
+        //     passwordOne !== passwordTwo ||
+        //     passwordOne.length < 6 ||
+        //     emailFilter.test(email) === false ||
+        //     username === '';
 
         return (
             <div className="signForms--container">

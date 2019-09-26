@@ -28,11 +28,13 @@
 .whoWeHelp--list {
   width: $col-10;
   margin: 0 auto;
-
+  margin-bottom: 2 *$heightUnit;
 }
 
 .whoWeHelp--list__description {
+  display: block;
   width: $col-5;
+  height: 6 * $heightUnit;
   margin: 0 auto;
   padding: 2 * $heightUnit 0;
   text-align: center;
@@ -64,6 +66,25 @@
       font-style: italic;
     }
 
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  justify-content: center;
+
+  li {
+    width: $heightUnit;
+    height: $heightUnit;
+    margin: 0.5 * $heightUnit;
+    border: 0.75px solid $darkgrey;
+    text-align: center;
+    line-height: $heightUnit;
+    cursor: pointer;
+    &:hover {
+      border-color: $gold;
+      color: $gold;
+    }
   }
 }
 

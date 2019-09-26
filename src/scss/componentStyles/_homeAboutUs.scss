@@ -11,27 +11,30 @@
     align-items: center;
 
     .aboutUs--title {
-      font-size: $heightUnit;
-      margin: 0.8 * $heightUnit 0;
+      font-size: 1.3 *  $heightUnit;
+      margin: 4 * $heightUnit 0 0.8 * $heightUnit 0;
     }
 
     .aboutUs--description {
-      font-size: 1 * $heightUnit;
-      margin: 0.8 * $heightUnit 0;
+      font-size: 0.9 * $heightUnit;
+      margin: $heightUnit 0;
+      line-height: 1.7 * $heightUnit;
       text-align: center;
     }
 
     .signature {
       width: $col-2;
       margin-left: $col-3;
+      margin-bottom: 4 * $heightUnit;
     }
   }
 
   .aboutUs--rightColumn {
     width: 50%;
+    overflow: hidden;
 
     img {
-      width: 100%;
+      width: -webkit-fill-available;
       height: auto;
       margin-bottom: -5px;
     }
