@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {NavLink} from "react-router-dom";
-import { Link} from 'react-scroll'
+import {Link} from 'react-scroll'
 import * as ROUTES from '../../constants/routes';
 
 
 class Navigation extends Component {
 
     handleSetActive(to) {
-        console.log(to);
+        // console.log(to);
     }
 
     render () {
@@ -25,10 +25,10 @@ class Navigation extends Component {
                         <Link className="navLink" activeClass="active" to="aboutUs" spy={true} smooth={true} offset={50} duration={500} onSetActive={this.handleSetActive}>O nas</Link>
                     </li>
                     <li>
-                        <Link to={ROUTES.HOME} className="navLink">Fundacja i organizacje</Link>
+                        <Link className="navLink" activeClass="active" to="WhoWeHelp" spy={true} smooth={true} offset={50} duration={500} onSetActive={this.handleSetActive}>Fundacja i organizacje</Link>
                     </li>
                     <li>
-                        <Link to={ROUTES.HOME} className="navLink">Kontakt</Link>
+                        <Link className="navLink" activeClass="active" to="Contact" spy={true} smooth={true} offset={50} duration={500} onSetActive={this.handleSetActive}>Kontakt</Link>
                     </li>
                 </ul>
             </nav>

@@ -1,0 +1,144 @@
+.contactSectionBackground {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/Background-Contact-Form.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+  position: absolute;
+  z-index: -1;
+}
+
+.contactFormContainer {
+  width: $col-4;
+  margin-left: $col-9;
+  margin-right: $col-1;
+  margin-top: 7 * $heightUnit;
+  margin-bottom: 7 * $heightUnit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+
+  .contactForm--title {
+    font-size: 1.3 *  $heightUnit;
+    margin-bottom: 0.8 * $heightUnit;
+  }
+
+  .contactForm--description {
+    margin: $heightUnit 0;
+    text-align: center;
+  }
+
+  .submitStatus {
+    width: 100%;
+    height: 3 * $heightUnit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      display: block;
+      color: green;
+      text-align: center;
+      font-size: 0.8 $heightUnit;
+      font-weight: 700;
+    }
+  }
+}
+
+.contactForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  .contactForm--inputsRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5 * $heightUnit;
+
+    .contactForm--inputField {
+      width: 48%;
+      display: flex;
+      flex-direction: column;
+
+      input[type=text] {
+        width: 100%;
+
+        &:focus, &:active, &:hover {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  .contactForm--messageRow {
+    width: 100%;
+
+    textarea {
+      width: 100%;
+      height: 3 * $heightUnit;
+    }
+  }
+  input:-webkit-autofill {
+    font-family: $font-base;
+    -webkit-box-shadow: 0 0 0 30px $white inset;
+    -webkit-text-fill-color: $darkgrey !important;
+  }
+
+  input:-webkit-autofill:active,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    background-color: $gold;
+    -webkit-text-fill-color: $darkgrey !important;
+  }
+  .contactForm--label {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0.5 * $heightUnit 0;
+  }
+
+  .contactLinks {
+    margin-top: $heightUnit;
+    float: right;
+    &:after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+  }
+}
+
+
+.contactForm--underline {
+  width:100%;
+  border-top: 2px solid $lightgrey;
+}
+
+.contactForm--underline__error {
+  width:100%;
+  border-top: 2px solid red;
+}
+
+.contactForm--validation {
+  display: block;
+  width: 100%;
+  height: 0.3 * $heightUnit;
+  font-size: 0.3 * $heightUnit;
+  content: "";
+}
+
+.contactForm--validation__error {
+  @extend .contactForm--validation;
+  color: red;
+}
+
+.contactForm--buttonsContainer {
+  width: 100%;
+  display: flex;
+  margin-top: $heightUnit;
+  justify-content: flex-end;
+}

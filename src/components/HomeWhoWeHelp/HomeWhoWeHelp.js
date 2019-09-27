@@ -3,7 +3,7 @@ import Decoration from "../../assets/Decoration.svg";
 import HelpLists from "../../assets/HelpLists";
 
 const HomeWhoWeHelp = () => (
-    <section className="sectionContainer">
+    <section className="sectionContainer" name="WhoWeHelp">
         <div className="whoWeHelp--upperPart">
             <p className="whoWeHelp--title">Komu pomagamy</p>
             <img src={Decoration} alt="decoration"/>
