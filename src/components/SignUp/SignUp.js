@@ -53,33 +53,10 @@ class SignUpFormBase extends Component {
 
         event.preventDefault();
         const { username, email, passwordOne, isAdmin } = this.state;
-        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const roles = {};
         if (isAdmin) {
             roles[ROLES.ADMIN] = ROLES.ADMIN;
         }
-
-        if (emailFilter.test(email) === false) {
-            this.setState({ emailError: true });
-            return;
-        } else {
-            this.setState({ emailError: false });
-        }
-
-        if (passwordOne.length < 6) {
-            this.setState({ passwordLengthError: true });
-            return;
-        } else {
-            this.setState({ passwordLengthError: false });
-        }
-
-        if (passwordOne !== this.state.passwordTwo) {
-            this.setState({ notTheSamePasswordError: true });
-            return;
-        } else {
-            this.setState({ notTheSamePasswordError: false });
-        }
-
 
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -111,7 +88,23 @@ class SignUpFormBase extends Component {
     };
 
     onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({ [event.target.name]: event.target.value }, ()=> {
+            const {email, passwordOne} = this.state;
+            const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            emailFilter.test(email) === false ?
+                this.setState({emailError: true}) :
+                this.setState({emailError: false});
+
+            passwordOne.length < 6 ?
+                this.setState({passwordLengthError: true}) :
+                this.setState({passwordLengthError: false});
+
+            passwordOne !== this.state.passwordTwo ?
+                this.setState({notTheSamePasswordError: true}) :
+                this.setState({notTheSamePasswordError: false});
+
+        })
     };
 
     onChangeCheckbox = event => {
@@ -138,7 +131,10 @@ class SignUpFormBase extends Component {
             emailError === true ||
             passwordLengthError === true ||
             notTheSamePasswordError === true ||
-            username === '';
+            username === '' ||
+            email === '' ||
+            passwordOne === '' ||
+            passwordTwo === '';
 
         return (
             <div className="signForms--container">

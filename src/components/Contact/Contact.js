@@ -56,30 +56,24 @@ class Contact extends Component {
     };
 
     onChange = event => {
+        this.setState({ [event.target.name]: event.target.value }, ()=> {
+            const {yourName, email, message} = this.state;
+            const yourNameFilter = /[^A-Za-z]/;
+            const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        const {yourName, email, message} = this.state;
-        const yourNameFilter = /[^A-Za-z]/;
-        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            yourNameFilter.test(yourName) === true ?
+                this.setState({ yourNameError: true }) :
+                this.setState({ yourNameError: false });
 
-        if (yourNameFilter.test(yourName) === true){
-            this.setState({ yourNameError: true });
-        } else {
-            this.setState({ yourNameError: false });
-        }
+            emailFilter.test(email) === false ?
+                this.setState({ emailError: true }) :
+                this.setState({ emailError: false });
 
-        if (emailFilter.test(email) === false) {
-            this.setState({ emailError: true });
-        } else {
-            this.setState({ emailError: false });
-        }
+            message.length < 120 ?
+                this.setState({ messageLengthError: true }) :
+                this.setState({ messageLengthError: false });
+        });
 
-        if (message.length < 120) {
-            this.setState({ messageLengthError: true });
-        } else {
-            this.setState({ messageLengthError: false });
-        }
-
-        this.setState({ [event.target.name]: event.target.value });
 
 
     };
@@ -97,7 +91,8 @@ class Contact extends Component {
             error,
         } = this.state;
 
-        const isInvalid = yourNameError === true || emailError === true || messageLengthError === true;
+        const isInvalid = yourNameError === true || emailError === true || messageLengthError === true ||
+            yourName === '' || email === '' || message === '';
 
         return (
 

@@ -49,21 +49,6 @@ class SignInFormBase extends Component {
         event.preventDefault();
 
         const { email, password } = this.state;
-        const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-        if (emailFilter.test(email) === false) {
-            this.setState({ emailError: true });
-            return;
-        } else {
-            this.setState({ emailError: false });
-        }
-
-        if (password.length < 6) {
-            this.setState({ passwordLengthError: true });
-            return;
-        } else {
-            this.setState({ passwordLengthError: false });
-        }
 
         this.props.firebase
             .doSignInWithEmailAndPassword(email, password)
@@ -78,12 +63,30 @@ class SignInFormBase extends Component {
     };
 
     onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
+
+        this.setState({ [event.target.name]: event.target.value }, ()=> {
+            const {email, password} = this.state;
+            const emailFilter = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            emailFilter.test(email) === false ?
+                this.setState({emailError: true}) :
+                this.setState({emailError: false});
+
+            password.length < 6 ?
+                this.setState({passwordLengthError: true}) :
+                this.setState({passwordLengthError: false});
+        })
+
     };
 
     render() {
-        const { email, password, error } = this.state;
-        const isInvalid = password.length === '' || email === '';
+        const { email, password, emailError, passwordLengthError, error } = this.state;
+        const isInvalid =
+            email === '' ||
+            password === '' ||
+            emailError === true ||
+            passwordLengthError === true;
+
         return (
             <div className="signForms--container">
                 <p className="signForms--title">Zaloguj się</p>
